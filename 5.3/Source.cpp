@@ -13,11 +13,20 @@ int main(void)
 
 	printf("Connected to Raspberry Pi\n");
 	
-	for (int i = 0; i < 6; i++)
-		ledOn(i);
-	Wait(5000);
+	int time = 2000;
 
-	for (int i = 0; i < 6; i++)
-		ledOff(i);
+	while (true)
+	{
+		if (switchOn() == 1)
+		{
+			for (int i = 1; i <= 6; i++)
+				ledOn(i);
+			Wait(time);
+
+			for (int i = 1; i <= 6; i++)
+				ledOff(i);
+			Wait(time);
+		}
+	}
 	return 0;
 }
